@@ -5,7 +5,23 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getVoteText() {
+    return element(by.css('.votes')).getText();
+  }
+
+  clickUpVote() {
+    this.getUpVoteButton().click();
+  }
+
+  clickDownVote() {
+    this.getDownVoteButton().click();
+  }
+
+  getUpVoteButton() {
+    return element(by.css('#up-vote'));
+  }
+
+  getDownVoteButton() {
+    return element(by.css("#down-vote"));
   }
 }
