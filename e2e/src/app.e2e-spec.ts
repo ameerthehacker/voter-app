@@ -3,8 +3,7 @@ import { AppPage } from './app.po';
 describe('Voting', () => {
   let page: AppPage;
 
-  beforeEach(() => {
-    // Arrange
+  beforeAll(() => {
     page = new AppPage();
     page.navigateTo();
   });
@@ -14,20 +13,22 @@ describe('Voting', () => {
     expect(page.getVoteText()).toEqual('0');
   });
 
-  it("should display 1 when upvoted", () => {
+  it("should display 100 when upvoted 100 times", () => {
     // Act
-    page.clickUpVote();
+    for(let i = 1; i <= 100; i++) {
+      page.clickUpVote();
+    }
     // Assert
-    expect(page.getVoteText()).toEqual('1');
+    expect(page.getVoteText()).toEqual('100');
   });
 
-  it("should display 1 when downvoted", () => {
+  it("should display 0 when downvoted 101", () => {
     // Act
-    page.clickUpVote();
-    page.clickUpVote();
-    page.clickDownVote();
+    for (let i = 1; i <= 101; i++) {
+      page.clickDownVote();
+    }
     // Assert
-    expect(page.getVoteText()).toEqual("1");
+    expect(page.getVoteText()).toEqual("0");
   });
 
 
